@@ -4,11 +4,18 @@ import { useState } from "react";
 import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
 import ModalContainer from "@/components/partials/container/ModalContainer";
+import { useGetUserData } from "@/core/services/queries";
+import Link from "next/link";
 
 function AuthForm() {
   const [step, setStep] = useState(1);
   const [mobile, setMobile] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const { data } = useGetUserData();
+
+
+  if (data?.data) return <Link href="/profile">ورود به حساب کاربری</Link>;
 
   return (
     <div>

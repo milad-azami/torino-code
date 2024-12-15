@@ -1,12 +1,12 @@
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
-// import api from "../configs/api";
+import api from "../config/api";
 
-// const useGetAllProducts = (page) => {
-//   const queryFn = () => api.get(`products?page=${page}&limit=10`);
-//   const queryKey = ["all-products", page];
+const useGetUserData = () => {
+  const queryFn = () => api.get("user/profile");
+  const queryKey = ["user-data"];
 
-//   return useQuery({ queryFn, queryKey });
-// };
+  return useQuery({ queryFn, queryKey });
+};
 
-// export { useGetAllProducts };
+export { useGetUserData };

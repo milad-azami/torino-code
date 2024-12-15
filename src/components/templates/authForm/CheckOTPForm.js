@@ -5,6 +5,7 @@ import OtpInput from "react18-input-otp";
 
 import { useCheckOtp } from "@/core/services/mutations";
 import { setCookie } from "@/core/utils/cookie";
+import { useGetUserData } from "@/core/services/queries";
 
 function CheckOTPForm({ mobile, setStep, setIsOpen }) {
   const [code, setCode] = useState("");
@@ -19,7 +20,8 @@ function CheckOTPForm({ mobile, setStep, setIsOpen }) {
     mutate(
       { mobile, code },
       {
-        onSuccess: (data) => {
+        onSuccess: async (data) => {
+          // console.log(data)
           setCookie("accessToken", data?.data?.accessToken, 30);
           setCookie("refreshToken", data?.data?.refreshToken, 365);
           setIsOpen(false);

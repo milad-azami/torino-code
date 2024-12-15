@@ -37,8 +37,8 @@ api.interceptors.response.use(
         setCookie("refreshToken", res?.response?.data.refreshToken, 360);
         return api(orginialRequest);
       } else {
-        setCookie("accessToken", "", 0);
-        setCookie("refreshToken", "", 0);
+        // setCookie("accessToken", "", 0);
+        // setCookie("refreshToken", "", 0);
       }
     }
     return Promise.reject(error.response.data);
