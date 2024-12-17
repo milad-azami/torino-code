@@ -12,6 +12,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (request) => {
     const accessToken = getCookie("accessToken");
+    console.log(accessToken);
     if (accessToken) {
       request.headers["Authorization"] = `Bearer ${accessToken}`;
     }
@@ -48,18 +49,17 @@ api.interceptors.response.use(
 export default api;
 
 const getNewTokens = async () => {
-  const refreshToken = getCookie("refreshToken");
-  if (!refreshToken) return;
-
-  try {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}auth/refresh-token`,
-      {
-        refreshToken,
-      }
-    );
-    return { response };
-  } catch (error) {
-    return { error };
-  }
+  // const refreshToken = getCookie("refreshToken");
+  // if (!refreshToken) return;
+  // try {
+  //   const response = await axios.post(
+  //     `${process.env.NEXT_PUBLIC_BASE_URL}auth/refresh-token`,
+  //     {
+  //       refreshToken,
+  //     }
+  //   );
+  //   return { response };
+  // } catch (error) {
+  //   return { error };
+  // }
 };

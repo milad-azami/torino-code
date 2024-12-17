@@ -21,7 +21,7 @@ function CheckOTPForm({ mobile, setStep, setIsOpen }) {
       { mobile, code },
       {
         onSuccess: async (data) => {
-          // console.log(data)
+          console.log(data)
           setCookie("accessToken", data?.data?.accessToken, 30);
           setCookie("refreshToken", data?.data?.refreshToken, 365);
           setIsOpen(false);
