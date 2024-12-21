@@ -15,7 +15,6 @@ const useCheckOtp = () => {
   const mutationFn = (data) => api.post("auth/check-otp", data);
 
   const onSuccess = (data) => {
-    console.log(data);
     setCookie("accessToken", data?.data?.accessToken, 30);
     setCookie("refreshToken", data?.data?.refreshToken, 365);
     queryClient.invalidateQueries({ queryKey: ["user-data"] });
