@@ -23,17 +23,17 @@ const useCheckOtp = () => {
   return useMutation({ mutationFn, onSuccess });
 };
 
-// const useCreateProduct = () => {
-//   const queryClient = useQueryClient();
+const useUpdateBankAccount = () => {
+  const queryClient = useQueryClient();
 
-//   const mutationFn = (data) => api.post("products", data);
+  const mutationFn = (data) => api.put("user/profile", data);
 
-//   const onSuccess = async () => {
-//     await queryClient.invalidateQueries({ queryKey: ["all-products"] });
-//   };
+  const onSuccess = () => {
+    queryClient.invalidateQueries({ queryKey: ["user-data"] });
+  };
 
-//   return useMutation({ mutationFn, onSuccess });
-// };
+  return useMutation({ mutationFn, onSuccess });
+};
 
 // const useDeleteProduct = () => {
 //   const queryClient = useQueryClient();
@@ -47,4 +47,4 @@ const useCheckOtp = () => {
 //   return useMutation({ mutationFn, onSuccess });
 // };
 
-export { useSendOtp, useCheckOtp };
+export { useSendOtp, useCheckOtp, useUpdateBankAccount };

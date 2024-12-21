@@ -4,8 +4,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { bankAcountSchema } from "@/core/schema";
+import { useUpdateBankAccount } from "@/core/services/mutations";
+import toast from "react-hot-toast";
 
 function BankAccountForm() {
+  const { mutate, isPending } = useUpdateBankAccount();
   const {
     register,
     handleSubmit,
@@ -15,7 +18,17 @@ function BankAccountForm() {
   });
 
   const submitHandler = (data) => {
-    console.log(data);
+    if (isPending) return;
+
+    mutate(
+      { payment: data },
+      {
+        onSuccess: (data) => {
+          toast.success(data?.data?.message);
+        },
+        onError: (error) => {},
+      }
+    );
   };
 
   return (
