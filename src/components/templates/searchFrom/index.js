@@ -1,13 +1,27 @@
 "use client";
 
+import { useGetTours } from "@/core/services/queries";
+import {
+  DateToIso,
+  deepFlattenToObject,
+  flattenObject,
+} from "@/core/utils/helper";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { DatePicker } from "zaman";
 
 function SearchFrom() {
+  const [query, setQuery] = useState("");
+
+  const { data, isPending, refetch } = useGetTours(query);
   const { register, handleSubmit, control } = useForm();
 
-  const submitHandler = (data) => {
-    console.log(data);
+  useEffect(() => {
+    refetch();
+  }, [query]);
+
+  const submitHandler = (form) => {
+    setQuery(flattenObject(form));
   };
 
   return (
@@ -30,7 +44,12 @@ function SearchFrom() {
           <DatePicker
             round="x2"
             accentColor="#28A745"
-            onChange={(e) => onChange({ startDate: e.from, endDate: e.to })}
+            onChange={(e) =>
+              onChange({
+                startDate: DateToIso(e.from),
+                endDate: DateToIso(e.to),
+              })
+            }
             range
           />
         )}
