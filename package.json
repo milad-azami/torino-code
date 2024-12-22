@@ -18,7 +18,8 @@
     "react-hook-form": "^7.54.2",
     "react-hot-toast": "^2.4.1",
     "react18-input-otp": "^1.1.4",
-    "yup": "^1.6.1"
+    "yup": "^1.6.1",
+    "zaman": "^2.1.1"
   },
   "devDependencies": {
     "eslint": "^8",
