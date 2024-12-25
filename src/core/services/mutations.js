@@ -35,6 +35,12 @@ const useUpdateBankAccount = () => {
   return useMutation({ mutationFn, onSuccess });
 };
 
+const useAddToBasket = () => {
+  const mutationFn = (id) => api.put(`basket/${id}`);
+
+  return useMutation({ mutationFn });
+};
+
 // const useDeleteProduct = () => {
 //   const queryClient = useQueryClient();
 
@@ -47,4 +53,4 @@ const useUpdateBankAccount = () => {
 //   return useMutation({ mutationFn, onSuccess });
 // };
 
-export { useSendOtp, useCheckOtp, useUpdateBankAccount };
+export { useSendOtp, useCheckOtp, useUpdateBankAccount, useAddToBasket };

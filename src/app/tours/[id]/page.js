@@ -1,3 +1,4 @@
+import ReserveButton from "@/components/atoms/ReserveButton";
 import { serverFetch } from "@/core/services/http";
 
 async function TourDetailsPage({ params }) {
@@ -5,11 +6,10 @@ async function TourDetailsPage({ params }) {
     cache: "no-store",
   });
 
-  console.log(tourData);
-
   return (
     <div>
       <h1>{tourData.title}</h1>
+      <ReserveButton id={params.id} />
     </div>
   );
 }
