@@ -5,8 +5,7 @@ import TourList from "@/components/templates/TourList";
 import { serverFetch } from "@/core/services/http";
 
 async function Home({ searchParams }) {
-  console.log(searchParams);
-  const data = await serverFetch("tour", {}, { cache: "no-store" });
+  const data = await serverFetch("tour", searchParams, { cache: "no-store" });
 
   return (
     <div>

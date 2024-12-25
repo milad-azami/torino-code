@@ -1,4 +1,6 @@
 function TourList({ toursData }) {
+  if (!toursData.length) return <p>نتیجه ای یافت نشد</p>;
+
   return (
     <main>
       {toursData?.map((tour) => (

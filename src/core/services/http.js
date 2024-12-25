@@ -11,8 +11,6 @@ const serverFetch = async (
   if (endpoint) url += endpoint;
   if (query) url += `?${QueryString.stringify(query)}`;
 
-  console.log(url);
-
   try {
     const res = await fetch(`${url}`, cache);
     const json = await res.json();
