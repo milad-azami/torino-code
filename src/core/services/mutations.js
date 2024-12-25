@@ -41,16 +41,16 @@ const useAddToBasket = () => {
   return useMutation({ mutationFn });
 };
 
-// const useDeleteProduct = () => {
-//   const queryClient = useQueryClient();
+const useCheckout = () => {
+  const mutationFn = (data) => api.post("order", data);
 
-//   const mutationFn = (data) => api.delete("products", data);
+  return useMutation({ mutationFn });
+};
 
-//   const onSuccess = async () => {
-//     await queryClient.invalidateQueries({ queryKey: ["all-products"] });
-//   };
-
-//   return useMutation({ mutationFn, onSuccess });
-// };
-
-export { useSendOtp, useCheckOtp, useUpdateBankAccount, useAddToBasket };
+export {
+  useSendOtp,
+  useCheckOtp,
+  useUpdateBankAccount,
+  useAddToBasket,
+  useCheckout,
+};
