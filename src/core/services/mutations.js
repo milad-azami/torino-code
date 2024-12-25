@@ -42,9 +42,15 @@ const useAddToBasket = () => {
 };
 
 const useCheckout = () => {
+  const queryClient = useQueryClient();
+
   const mutationFn = (data) => api.post("order", data);
 
-  return useMutation({ mutationFn });
+  const onSuccess = () => {
+    queryClient.invalidateQueries({ queryKey: ["user/tours"] });
+  };
+
+  return useMutation({ mutationFn, onSuccess });
 };
 
 export {
